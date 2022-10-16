@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
 
+    path('staff/<str:pk>/', views.getStaff),
     path('fish/', views.getAllFish),
     path('get/<str:pk>/', views.getFishInfo),
     path('add/', views.addFishInfo),

@@ -1,8 +1,12 @@
 from django.db import models
 
+
+class Staff(models.Model):
+    account = models.EmailField(max_length=254)
+    password = models.CharField(max_length=100)
+
 class Region(models.Model):
     name = models.CharField(max_length=20, unique=True)
-
 
 class Fish(models.Model):
     name = models.CharField(max_length=50, unique=True)

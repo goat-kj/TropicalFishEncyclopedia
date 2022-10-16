@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Fish, Region
-from .serializers import FishSerializer, RegionSerializer
+from .models import Fish, Region, Staff
+from .serializers import FishSerializer, RegionSerializer, StaffSerializer
 
 @api_view(['GET'])
 def getRegionInfo(request):
     region = Region.objects.all()
     serializer = RegionSerializer(region, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getStaff(request, pk):
+    staff = Staff.objects.get(id=pk)
+    serializer = StaffSerializer(staff, many=False)
     return Response(serializer.data)
 
 @api_view(['GET'])
