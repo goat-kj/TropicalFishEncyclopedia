@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
+    "react-hooks-global-state": "^2.0.0",
+    "redux": "^4.2.0"
+  }
+}
