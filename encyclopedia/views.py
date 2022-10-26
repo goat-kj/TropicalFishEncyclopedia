@@ -43,10 +43,11 @@ def addFishInfo(request):
         return Response(serializer.data)
     return Response(serializer.errors)
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def updateFishInfo(request, pk):
+    print(request.data['data'])
     fish = Fish.objects.get(id=pk)
-    serializer = FishSerializer(instance=fish, data=request.data)
+    serializer = FishSerializer(instance=fish, data=request.data['data'])
     if serializer.is_valid():
         serializer.save()    
         return Response(serializer.data)
@@ -55,6 +56,7 @@ def updateFishInfo(request, pk):
 @api_view(['DELETE'])
 def deleteFishInfo(request, pk):
     fish = Fish.objects.get(id=pk)
+    print(request.data)
     fish.delete()
     return Response("Fish Info Deleted.")
 
